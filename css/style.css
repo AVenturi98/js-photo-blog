@@ -1,0 +1,28 @@
+#body_font {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.wall {
+    background-image: url(../img/wall.png);
+}
+
+.back_img_section {
+    background-image: url(../img/cork.png);
+    height: 100vh;
+}
+
+.drop_pos {
+    position: relative;
+}
+
+.drop {
+    width: 30px;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.debug {
+    border: 1px solid black;
+}
