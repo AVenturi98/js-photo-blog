@@ -59,11 +59,12 @@ Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e l
 
 const base_URL = 'https://jsonplaceholder.typicode.com';
 
-const body_URL = '/photos'
+const body_URL = '/photos';
 
-const endpoint = base_URL + body_URL // + ?_limits=6
+const endpoint = base_URL + body_URL; // + ?_limits=6
 
 const elementForAppend = document.querySelector('.cont_append');
+const overElement = document.querySelector('.overview');
 
 axios
     .get(endpoint, {
@@ -73,10 +74,10 @@ axios
     })
     .then( (res) => {
 
-        const photos = res.data
-        console.log(photos)
+        const photos = res.data;
+        console.log(photos);
 
-        elementsPage(elementForAppend, photos)
+        elementsPage(elementForAppend, photos, overElement);
 
     })
     .catch((err) => {
@@ -84,19 +85,19 @@ axios
     })
 
     
-function elementsPage(append, root) {
+function elementsPage(append, root, element) {
 
     root.forEach((photo) => {
 
-        const { title, url } = photo 
+        const { title, url } = photo ;
         
         const elementAddHTML = `
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-sm-12 carta">
                 <div class="card drop_pos h-100">
                     <img src="./img/pin.svg" class="drop">
                     <div class="row g-0">
-                    <div class="col-md-12 col-lg-4">
-                        <img src="${url}" class="img-fluid img-thumbnail img-thumbnail card-img-top">
+                    <div class="col-md-12 col-lg-12">
+                        <img src="${url}" class="img-fluid img-thumbnail card-img-top">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -105,10 +106,45 @@ function elementsPage(append, root) {
                     </div>
                     </div>
                 </div>
-            </div> `
+            </div> `;
 
-    append.innerHTML += elementAddHTML
+        append.innerHTML += elementAddHTML;
         
+        window.addEventListener('click', () => {
+            
+            element.innerHTML = `
+                <img src="" class="img-fluidimg-thumbnail card-img-top" style="width: 500px">
+                <button type="button" id="button">Chiudi</button>`;
+    
+            element.classList.remove('d-none');
+    
+            window.addEventListener('click', () => {
+                element.classList.add('d-none')
+            });
+        });
     });
+    
+};
 
-}
+
+
+
+
+
+    // const clickButton = (event, root) => {
+    //     event.addEventListener('click', () => {
+    //         root.classList.add('d-none')
+    //     })
+    // }
+
+    // root.addEventListener('click', () => {
+
+    //     const newDocument = document.createDocumentFragment();
+
+    //     newDocument.innerHTML = `
+    //         <div class="overview"></div>`
+
+    //     elementForAppend.append(newDocument)
+
+    // })
+
