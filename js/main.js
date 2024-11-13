@@ -138,24 +138,3 @@ function elementsPage(append, root, element) {
     }) 
 };
         
-
-
-
-
-    // const clickButton = (event, root) => {
-    //     event.addEventListener('click', () => {
-    //         root.classList.add('d-none')
-    //     })
-    // }
-
-    // root.addEventListener('click', () => {
-
-    //     const newDocument = document.createDocumentFragment();
-
-    //     newDocument.innerHTML = `
-    //         <div class="overview"></div>`
-
-    //     elementForAppend.append(newDocument)
-
-    // })
-
