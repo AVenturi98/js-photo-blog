@@ -92,12 +92,12 @@ function elementsPage(append, root, element) {
         const { title, url } = photo ;
         
         const elementAddHTML = `
-            <div class="col-md-4 col-sm-12 carta">
+            <div class="col-md-4 col-sm-12">
                 <div class="card drop_pos h-100">
                     <img src="./img/pin.svg" class="drop">
                     <div class="row g-0">
                     <div class="col-md-12 col-lg-12">
-                        <img src="${url}" class="img-fluid img-thumbnail card-img-top">
+                        <img src="${url}" class="img-fluid img-thumbnail card-img-top img">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -110,23 +110,34 @@ function elementsPage(append, root, element) {
 
         append.innerHTML += elementAddHTML;
         
-        window.addEventListener('click', () => {
+    });
+
+    const photos = document.querySelectorAll('.img');
+
+    photos.forEach(el => {
+        el.addEventListener('click', () => {
+
+            element.classList.remove('d-none');
+            document.body.classList.add('no-scroll');
             
             element.innerHTML = `
-                <img src="" class="img-fluidimg-thumbnail card-img-top" style="width: 500px">
-                <button type="button" id="button">Chiudi</button>`;
-    
-            element.classList.remove('d-none');
-    
-            window.addEventListener('click', () => {
-                element.classList.add('d-none')
-            });
+                <button type="button" id="close_over" class="btn"><i class="fa-solid fa-xmark"></i></button>
+                <figure>
+                    <img src="${el.src}" class="img-fluidimg-thumbnail card-img-top" style="width: 500px">
+                </figure>`;
+                // console.log(photos, el)
+                const btnC = document.getElementById('close_over');
+                // console.log(btnC);
+                
+                btnC.addEventListener('click', () => {
+                    // console.log('ok');
+                    element.classList.add('d-none');
+                    document.body.classList.remove('no-scroll')
+                })
         });
-    });
-    
+    }) 
 };
-
-
+        
 
 
 

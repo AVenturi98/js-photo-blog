@@ -33,13 +33,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 30px
 }
 
-.carta:hover {
+#close_over {
+    align-self: flex-end;
+    margin-right: 50px;
+    font-size: 35px;
+    color: white;
+}
+
+#close_over:hover {
+    transform: scale(120%);
+    color: rgba(211, 211, 211, 0.603);
+    transition: .300ms;
+}
+
+.no-scroll {
+    overflow: hidden ;
+}
+
+/* .carta:hover {
     transform: scale(1.1);
     rotate: 8deg;
     z-index: 1;
-}
+} */
 
 
 @media (max-width: 992px) {
